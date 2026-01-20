@@ -8,7 +8,7 @@ function Checkbox({ label = "All Pages" }) {
     }
 
     return (
-        <label className="checkbox-container">
+        <div className="checkbox-container">
             <span className="text">{label}</span>
 
             <input
@@ -17,9 +17,7 @@ function Checkbox({ label = "All Pages" }) {
                 checked={isChecked}
                 onChange={handleCheckboxChange}
             />
-
-            <span className="checkbox-box"></span>
-        </label>
+        </div>
     )
 }
 

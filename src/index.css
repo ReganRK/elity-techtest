@@ -74,42 +74,166 @@ button:focus-visible {
   opacity: 1;
 }
 
-.checkbox-box {
+/* base checkbox */
+.checkbox-input {
   width: 23px;
   height: 23px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
   border-radius: 6px;
-  border: 1.5px solid #cfcfcf;
-  background: #fff;
+  border: 1px solid #CDCDCD;
+  background-color: #ffffff;
+
+  cursor: pointer;
+  opacity: 0.6;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
 }
 
-.checkbox-input {
-  display: none;
+/* Base checkmark */
+.checkbox-input::after {
+  content: '';
+  width: 6px;
+  height: 10px;
+
+  border: solid #E3E3E3;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
+
+  opacity: 0;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
 }
 
-.checkbox-input:checked + .checkbox-box {
-  background: #4f7cff;
-  border-color: #4f7cff;
+/* Hover (unchecked preview) */
+.checkbox-input:hover {
+  border-color: #BDBDBD;
+  opacity: 1;
 }
 
-.checkbox-container:hover .checkbox-box {
-  border-color: #4f7cff;
+.checkbox-input:hover:not(:checked)::after {
+  opacity: 1;
 }
 
-.checkbox-input:focus-visible + .checkbox-box {
+/* focus when pressed */
+.checkbox-input:focus-visible,
+.checkbox-input:active {
+  box-shadow: 0 0 0 3px rgba(36, 105, 246, 0.1);
+}
+
+.checkbox-input:focus-visible::after,
+.checkbox-input:active::after {
+  border-color: #878787;
+  opacity: 1;
+}
+
+/* Checked final*/
+.checkbox-input:checked {
+  background-color: #2469F6;
+  border-color: #2469F6;
+}
+
+.checkbox-input:checked::after {
+  border-color: #FFFFFF;
+  border-width: 0 2px 2px 0;
+  opacity: 1;
+}
+
+/* Focus shadow */
+.checkbox-input:focus-visible {
   outline: 2px solid #a5b4fc;
   outline-offset: 2px;
 }
 
-.checkbox-input:disabled + .checkbox-box {
-  background: #e5e7eb;
-  border-color: #d1d5db;
-  cursor: not-allowed;
+/* pressed when checked */
+.checkbox-input:checked:active {
+  background-color: #2469F6;
+  border-color: #2469F6;
 }
 
-.checkbox-input:checked:disabled + .checkbox-box {
-  background: #9ca3af;
+.checkbox-input:checked:active::after {
+  border-color: #FFFFFF;
+  border-width: 0 1px 1px 0;
+  opacity: 1;
 }
 
+/* from checked to uncheck final */
+.checkbox-input:checked:not(:active) {
+  background-color: #2469F6;
+  border-color: #2469F6;
+}
+
+.checkbox-input:checked:not(:active)::after {
+  border-color: #FFFFFF;
+  border-width: 0 2px 2px 0;
+  opacity: 1;
+}
+
+/* Checked + hover */
+.checkbox-input:checked:hover {
+  background-color: #5087F8;
+  border-color: #5087F8;
+}
+
+/* Checked + focus */
+.checkbox-input:checked:focus-visible {
+  background-color: #5087F8;
+  border-color: #5087F8;
+}
+
+/* make checkbox container scrollable */
+.checkbox-scroll {
+  height: 164px;           
+  overflow-y: auto;        
+  overflow-x: hidden;      
+  display: flex;
+  flex-direction: column;       
+  scroll-behavior: smooth;
+}
+
+.checkbox-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.primary-button {
+  width: 340px;
+  height: 40px;
+  padding: 10px 20px;
+  gap: 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #FFCE22;
+  opacity: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  color: #1F2128;
+}
+
+/* Hover */
+.primary-button:hover {
+  background-color: #FFD84D;
+}
+
+/* Remove default focus ring */
+.primary-button:focus {
+  outline: none;
+}
+
+.primary-button:focus-visible {
+  outline: none;
+}
 
 @media (prefers-color-scheme: light) {
   :root {

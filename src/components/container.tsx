@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Checkbox from './checkbox.tsx'
+import PrimaryButton from './primarybutton.tsx'
 
 function Container() {
     const [count, setCount] = useState(0)
@@ -11,13 +12,15 @@ function Container() {
             <div>
                 <Checkbox label="All Pages" />
             </div>
-            <div>
+            <hr />
+            <div className="checkbox-scroll">
                 {pages.map((pageNum) => (
                     <Checkbox key={pageNum} label={`Page ${pageNum}`} />
                 ))}
             </div>
+            <hr />
             <div>
-
+                <PrimaryButton label="Done" />
             </div>
         </>
     )
