@@ -260,6 +260,11 @@ button:focus-visible {
   opacity: 1;  
 }
 
+/* button when pressed */
+.primary-button:active {
+  background-color: #FFCE22;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
