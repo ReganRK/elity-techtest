@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 function PrimaryButton({ label = "Primary Button" }) {
     
     return (

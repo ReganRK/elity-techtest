@@ -1,12 +1,4 @@
-import { useState } from 'react'
-
-function Checkbox({ label = "All Pages" }) {
-    const [isChecked, setIsChecked] = useState(false)
-
-    const handleCheckboxChange = () => {
-        setIsChecked(!isChecked)
-    }
-
+function Checkbox({ label = "All Pages", checked, onChange }: { label?: string; checked?: boolean; onChange?: () => void }) {
     return (
         <div className="checkbox-container">
             <span className="text">{label}</span>
@@ -14,8 +6,8 @@ function Checkbox({ label = "All Pages" }) {
             <input
                 type="checkbox"
                 className="checkbox-input"
-                checked={isChecked}
-                onChange={handleCheckboxChange}
+                checked={checked}
+                onChange={onChange}
             />
         </div>
     )
